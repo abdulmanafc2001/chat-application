@@ -8,6 +8,7 @@ import (
 
 func main() {
 	setUpApi()
+	log.Println("server started at 8080 port")
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
 
@@ -18,5 +19,5 @@ func setUpApi() {
 
 	http.Handle("/", http.FileServer(http.Dir("./frontent")))
 	http.HandleFunc("/ws", manager.serveWS)
-	http.HandleFunc("/login",manager.loginHandler)
+	http.HandleFunc("/login", manager.loginHandler)
 }
